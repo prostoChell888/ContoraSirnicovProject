@@ -27,15 +27,9 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         Optional<PersonInfo> person = studentRepository.findByEmail(email);
-        if (person.isEmpty()) {
-            person = teacherRepository.findByEmail(email);
-        }
 
-        if (person.isEmpty()) {
-            throw new EntityNotFound("entity not found");
-        }
-
-        PersonInfo personValue = person.get();
+        PersonInfo personValue = person.orElseGet(() -> teacherRepository.findByEmail(email)
+                .orElseThrow(() -> new EntityNotFound("entity not found")));
 
         // Здесь вы создаете объект UserDetails, который содержит информацию о пользователе, включая имя, пароль и роли.
         return new User(
