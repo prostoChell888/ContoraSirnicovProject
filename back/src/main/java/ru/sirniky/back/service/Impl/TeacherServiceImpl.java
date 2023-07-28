@@ -1,12 +1,15 @@
 package ru.sirniky.back.service.Impl;
 
 import jakarta.transaction.Transactional;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 import ru.sirniky.back.dto.TeacherDto;
+import ru.sirniky.back.dto.TeacherWithPasswordDto;
 import ru.sirniky.back.entity.Teacher;
+import ru.sirniky.back.exeption.EntityAlreadyExist;
 import ru.sirniky.back.mapper.TeacherMapper;
 import ru.sirniky.back.repositrory.TeacherRepository;
 import ru.sirniky.back.service.RoleService;
@@ -27,13 +30,28 @@ public class TeacherServiceImpl implements TeacherService {
 
     @Override
     @Transactional
-    public Teacher createTeacherAdmin(TeacherDto teacher) {
+    public Teacher createTeacherAdmin(@Valid TeacherWithPasswordDto teacher) {
 
         Teacher teacherAdmin = teacherMapper.toEntity(teacher);
-        teacherAdmin.setPassword(passwordEncoder.encode(passwordGenerator.generate()));
+        teacherAdmin.setPassword(passwordEncoder.encode(teacher.getPassword()));
         teacherAdmin.addRole(roleService.getRoleByName(RoleEnum.ADMIN));
         teacherAdmin.addRole(roleService.getRoleByName(RoleEnum.TEACHER));
 
         return teacherRepository.save(teacherAdmin);
+    }
+
+    @Override
+    @Transactional
+    public Teacher createTeacher(TeacherDto teacher) {
+
+        if (teacherRepository.findByEmail(teacher.getEmail()).isPresent()) {
+            throw new EntityAlreadyExist("student with email " + teacher.getEmail() + " already exist");
+        }
+
+        Teacher newTeacher = teacherMapper.toEntity(teacher);
+        newTeacher.setPassword(passwordEncoder.encode(passwordGenerator.generate()));
+        newTeacher.addRole(roleService.getRoleByName(RoleEnum.TEACHER));
+
+        return teacherRepository.save(newTeacher);
     }
 }

@@ -8,4 +8,6 @@ import ru.sirniky.back.entity.Teacher;
 public interface TeacherMapper {
 
     Teacher toEntity(TeacherDto teacher);
+
+    TeacherDto toDto(Teacher teacher);
 }

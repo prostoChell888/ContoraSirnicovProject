@@ -33,11 +33,6 @@ public class PersonInfo {
     private String email;
 
     @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(
-            name = "person_role",
-            joinColumns = @JoinColumn(name = "person_id"),
-            inverseJoinColumns = @JoinColumn(name = "role_id")
-    )
     @Builder.Default
     private List<Role> roles = new ArrayList<>();
 

@@ -1,6 +1,7 @@
 package ru.sirniky.back.service.Impl;
 
 import jakarta.transaction.Transactional;
+import jakarta.validation.constraints.NotNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -42,5 +43,11 @@ public class StudentServiceImpl implements StudentService {
         newStudent.addRole(roleService.getRoleByName(RoleEnum.STUDENT));
 
         return studentRepository.save(newStudent);
+    }
+
+    @Override
+    @Transactional
+    public void deleteStudent(@NotNull int id) {
+        studentRepository.deleteById(id);
     }
 }
