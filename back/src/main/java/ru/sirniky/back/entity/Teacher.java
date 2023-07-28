@@ -18,7 +18,4 @@ public class Teacher extends PersonInfo{
 
     @Column(name = "rank")
     private String rank;
-
-    @Column(name = "is_admin")
-    private Boolean isAdmin;
 }

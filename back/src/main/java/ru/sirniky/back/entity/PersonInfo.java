@@ -1,10 +1,13 @@
 package ru.sirniky.back.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
+
+import java.util.List;
 
 @MappedSuperclass
 @AllArgsConstructor
@@ -17,16 +20,17 @@ public class PersonInfo {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "first_name")
-    private String firstName;
+    @Column(name = "full_name")
+    private String fullName;
 
-    @Column(name = "last_name")
-    private String lastName;
+    @Column(name = "password")
+    private String password;
 
-    @Column(name = "patronymic")
-    private String patronymic;
+    @Column(name = "email")
+    @Email
+    private String email;
 
-    @ManyToOne
+    @ManyToMany
     @JoinColumn(name = "role_id")
-    private Role role;
+    private List<Role> roles;
 }
