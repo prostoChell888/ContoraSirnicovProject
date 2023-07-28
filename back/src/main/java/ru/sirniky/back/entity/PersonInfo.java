@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
+import ru.sirniky.back.util.RoleEnum;
 
 import java.util.List;
 
@@ -33,4 +34,13 @@ public class PersonInfo {
     @ManyToMany
     @JoinColumn(name = "role_id")
     private List<Role> roles;
+
+    public void addRole(RoleEnum role) {
+
+        Role roleEntity = Role.builder()
+                        .name(role.name())
+                                .build();
+
+        roles.add(roleEntity);
+    }
 }

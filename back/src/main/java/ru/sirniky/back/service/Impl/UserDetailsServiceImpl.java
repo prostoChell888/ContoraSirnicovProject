@@ -1,4 +1,4 @@
-package ru.sirniky.back.service;
+package ru.sirniky.back.service.Impl;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
