@@ -1,5 +1,6 @@
 package ru.sirniky.back.config;
 
+import org.apache.commons.text.RandomStringGenerator;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
@@ -9,7 +10,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Configuration
-@PropertySource("classpath:adminInfo.properties")
+@PropertySource({"classpath:adminInfo.properties", "classpath:password.properties"})
 public class AppConfig {
 
     @Bean
@@ -20,5 +21,12 @@ public class AppConfig {
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
+    }
+
+    @Bean
+    public RandomStringGenerator passwordGenerator() {
+        return new RandomStringGenerator.Builder()
+                .withinRange(33, 45)
+                .build();
     }
 }

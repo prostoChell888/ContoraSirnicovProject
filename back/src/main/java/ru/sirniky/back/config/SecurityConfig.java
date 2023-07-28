@@ -7,9 +7,9 @@ import org.springframework.security.authentication.dao.DaoAuthenticationProvider
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import ru.sirniky.back.service.Impl.UserDetailsServiceImpl;
 import ru.sirniky.back.util.RoleEnum;
 
 @Configuration
@@ -17,7 +17,7 @@ import ru.sirniky.back.util.RoleEnum;
 @RequiredArgsConstructor
 public class SecurityConfig {
 
-    private final UserDetailsService userDetailsService;
+    private final UserDetailsServiceImpl userDetailsService;
     private final PasswordEncoder passwordEncoder;
 
     @Bean
@@ -33,16 +33,17 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
 
-        httpSecurity
-                .authorizeHttpRequests(authorize -> authorize
+        httpSecurity.csrf()
+                .disable()
+                .cors()
+                .and().authorizeHttpRequests(authorize -> authorize
                         .requestMatchers("/admin/**")
                             .hasRole(RoleEnum.ADMIN.name())
                         .requestMatchers("/teacher/**")
-                        .hasRole(RoleEnum.TEACHER.name())
-                        .requestMatchers("/**")
-                            .permitAll()
+                            .hasRole(RoleEnum.TEACHER.name())
                         .anyRequest()
-                        .authenticated())
+                            .permitAll()
+                )
                 .httpBasic(Customizer.withDefaults());
 
         httpSecurity.authenticationProvider(authenticationProvider());

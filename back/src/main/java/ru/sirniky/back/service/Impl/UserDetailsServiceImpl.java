@@ -33,7 +33,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
         // Здесь вы создаете объект UserDetails, который содержит информацию о пользователе, включая имя, пароль и роли.
         return new User(
-                personValue.getFullName(),
+                personValue.getEmail(),
                 personValue.getPassword(),
                 getAuthorities(personValue.getRoles())
         );
