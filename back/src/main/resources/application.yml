@@ -13,3 +13,7 @@ spring:
     url: ${datasource.url}
     username: ${datasource.username}
     password: ${datasource.password}
+
+    springdoc:
+      swagger-ui:
+        path: /swag
