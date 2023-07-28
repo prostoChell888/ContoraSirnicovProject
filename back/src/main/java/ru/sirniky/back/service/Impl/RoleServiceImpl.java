@@ -1,9 +1,9 @@
 package ru.sirniky.back.service.Impl;
 
-import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.sirniky.back.entity.Role;
+import ru.sirniky.back.exeption.EntityNotFound;
 import ru.sirniky.back.repositrory.RoleRepository;
 import ru.sirniky.back.service.RoleService;
 import ru.sirniky.back.util.RoleEnum;
@@ -19,7 +19,6 @@ public class RoleServiceImpl implements RoleService {
     private final RoleRepository roleRepository;
 
     @Override
-    @Transactional
     public void initRoles() {
         List<Role> roleList = new ArrayList<>();
 
@@ -30,5 +29,11 @@ public class RoleServiceImpl implements RoleService {
                 );
 
         roleRepository.saveAll(roleList);
+    }
+
+    @Override
+    public Role getRoleByName(RoleEnum role) {
+        return roleRepository.findByName(role.name())
+                .orElseThrow(() -> new EntityNotFound("role with name " + role.name() + " not found"));
     }
 }

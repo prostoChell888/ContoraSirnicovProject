@@ -3,11 +3,11 @@ package ru.sirniky.back.config.appRunner;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
+import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Component;
+import ru.sirniky.back.dto.TeacherWithPasswordDto;
+import ru.sirniky.back.service.RoleService;
 import ru.sirniky.back.service.TeacherService;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Component
 @RequiredArgsConstructor
@@ -15,41 +15,25 @@ public class AppInit implements ApplicationRunner {
 
     private final TeacherService teacherService;
     private final RoleService roleService;
+    private final Environment environment;
 
     @Override
-    public void run(ApplicationArguments args) throws Exception {
+    public void run(ApplicationArguments args) {
         roleService.initRoles();
 
-        List<AccountWithPasswordDto> accountList = new ArrayList<>();
+        String fullName = environment.getProperty("teacher.fullname");
+        String email = environment.getProperty("teacher.email");
+        String password = environment.getProperty("teacher.password");
+        String rank = environment.getProperty("teacher.rank");
 
-        AccountWithPasswordDto accountDto = AccountWithPasswordDto.builder()
-                .firstName("adminFirstName")
-                .lastName("adminLastName")
-                .email("admin@simbirsoft.com")
-                .password("qwerty123")
-                .role("ADMIN")
+        TeacherWithPasswordDto teacherAdmin = TeacherWithPasswordDto.builder()
+                .fullName(fullName)
+                .email(email)
+                .password(password)
+                .rank(rank)
                 .build();
-        accountList.add(accountDto);
 
-        accountDto = AccountWithPasswordDto.builder()
-                .firstName("chipperFirstName")
-                .lastName("chipperLastName")
-                .email("chipper@simbirsoft.com")
-                .password("qwerty123")
-                .role("CHIPPER")
-                .build();
-        accountList.add(accountDto);
-
-        accountDto = AccountWithPasswordDto.builder()
-                .firstName("userFirstName")
-                .lastName("userLastName")
-                .email("user@simbirsoft.com")
-                .password("qwerty123")
-                .role("USER")
-                .build();
-        accountList.add(accountDto);
-
-        teacherService.saveAllAccounts(accountList);
+        teacherService.createTeacherAdmin(teacherAdmin);
     }
 
 }

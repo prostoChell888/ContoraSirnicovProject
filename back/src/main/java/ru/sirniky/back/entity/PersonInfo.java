@@ -3,11 +3,12 @@ package ru.sirniky.back.entity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
-import ru.sirniky.back.util.RoleEnum;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @MappedSuperclass
@@ -33,14 +34,10 @@ public class PersonInfo {
 
     @ManyToMany
     @JoinColumn(name = "role_id")
-    private List<Role> roles;
+    @Builder.Default
+    private List<Role> roles = new ArrayList<>();
 
-    public void addRole(RoleEnum role) {
-
-        Role roleEntity = Role.builder()
-                        .name(role.name())
-                                .build();
-
-        roles.add(roleEntity);
+    public void addRole(Role role) {
+        roles.add(role);
     }
 }
