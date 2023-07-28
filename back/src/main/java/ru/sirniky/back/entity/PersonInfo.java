@@ -25,4 +25,8 @@ public class PersonInfo {
 
     @Column(name = "patronymic")
     private String patronymic;
+
+    @ManyToOne
+    @JoinColumn(name = "role_id")
+    private Role role;
 }

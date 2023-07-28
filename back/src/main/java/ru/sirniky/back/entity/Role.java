@@ -7,17 +7,17 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "group_info")
+@Table(name = "role")
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
-public class Group {
+public class Role {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "name")
+    @Column(name = "role_name")
     private String name;
 }
