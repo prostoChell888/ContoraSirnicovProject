@@ -2,8 +2,6 @@ package ru.sirniky.back.service.Impl;
 
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
-import org.apache.commons.text.RandomStringGenerator;
-import org.springframework.core.env.Environment;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
@@ -15,6 +13,7 @@ import ru.sirniky.back.repositrory.StudentRepository;
 import ru.sirniky.back.service.RoleService;
 import ru.sirniky.back.service.StudentService;
 import ru.sirniky.back.util.RoleEnum;
+import ru.sirniky.back.util.password.PasswordGenerator;
 
 @Service
 @RequiredArgsConstructor
@@ -26,8 +25,8 @@ public class StudentServiceImpl implements StudentService {
     private final StudentMapper studentMapper;
     private final PasswordEncoder passwordEncoder;
 
-    private final RandomStringGenerator passwordGenerator;
-    private final Environment environment;
+    private final PasswordGenerator passwordGenerator;
+
 
     @Override
     @Transactional
@@ -38,7 +37,7 @@ public class StudentServiceImpl implements StudentService {
         }
 
         Student newStudent = studentMapper.toEntity(studentDto);
-        newStudent.setPassword(passwordEncoder.encode(passwordGenerator.generate(environment.getProperty("password.length", Integer.class))));
+        newStudent.setPassword(passwordEncoder.encode(passwordGenerator.generate()));
 
         newStudent.addRole(roleService.getRoleByName(RoleEnum.STUDENT));
 
