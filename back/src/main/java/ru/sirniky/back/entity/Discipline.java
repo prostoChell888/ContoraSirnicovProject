@@ -1,6 +1,5 @@
 package ru.sirniky.back.entity;
 
-
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -14,33 +13,27 @@ import java.util.List;
 @Setter
 @ToString
 @RequiredArgsConstructor
-@Table(name = "competencies")
-public class Competencies {
+@Table(name = "discipline")
+public class Discipline {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @Column(name = "category_name")
-    private String categoryName;
-
-    @Column(name = "competence_code")
-    private String competenceCode;
-
-    @Column(name = "name_of_universal_competence")
-    private String nameOfUniversalCompetence;
+    @Column(name = "indicator_code")
+    private String indicatorCode;
 
     @ManyToMany()
     @JoinTable(
             name = "competencies_educational_program_map",
             joinColumns = @JoinColumn(
-                    name = "competencies_id",
+                    name = "discipline_id",
                     referencedColumnName = "id"
             ),
             inverseJoinColumns = @JoinColumn(
-                    name = "educational_program_id",
+                    name = "competencies_id",
                     referencedColumnName = "id"
             )
     )
-    private List<EducationalProgram> educationalPrograms;
+    private List<Competencies> competencies;
 }
