@@ -11,8 +11,6 @@ public record CreateEducationLevelRequest(
         String ugsnCode,
 
         @NotBlank(message = "UGSN label cannot be blank")
-        String ugsnLabel,
+        String ugsnLabel
 
-        @NotBlank(message = "Direction code cannot be blank")
-        String directionCode
 ) {}

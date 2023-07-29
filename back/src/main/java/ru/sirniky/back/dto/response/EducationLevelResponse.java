@@ -10,5 +10,4 @@ public class EducationLevelResponse {
         private String label;
         private String ugsnCode;
         private String ugsnLabel;
-        private String directionCode;
 }
