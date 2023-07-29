@@ -2,44 +2,20 @@ package ru.sirniky.back.service;
 
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Min;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.validation.annotation.Validated;
-import ru.sirniky.back.entity.EducationLevel;
-import ru.sirniky.back.repositrores.EducationLevelRepository;
 import jakarta.validation.constraints.NotNull;
-
+import ru.sirniky.back.dto.request.CreateEducationLevelRequest;
+import ru.sirniky.back.dto.response.EducationLevelResponse;
 
 import java.util.List;
-import java.util.Optional;
 
-@Service
-@Validated
-public class EducationLevelService {
-    private final EducationLevelRepository educationLevelRepository;
+public interface EducationLevelService {
+    List<EducationLevelResponse> getAllEducationLevels();
 
-    @Autowired
-    public EducationLevelService(EducationLevelRepository educationLevelRepository) {
-        this.educationLevelRepository = educationLevelRepository;
-    }
+    EducationLevelResponse getEducationLevelById(@Min(1) @NotNull Long id);
 
-    public List<EducationLevel> getAllEducationLevels() {
-        return educationLevelRepository.findAll();
-    }
+    EducationLevelResponse saveEducationLevel(@Valid CreateEducationLevelRequest levelRequest);
 
-    public Optional<EducationLevel> getEducationLevelById(@Min(1)@NotNull Long id) {
-        return educationLevelRepository.findById(id);
-    }
+    EducationLevelResponse updateEducationLevel(@Min(1) @NotNull Long id, @Valid CreateEducationLevelRequest levelRequest);
 
-    public EducationLevel saveEducationLevel(@Valid EducationLevel educationLevel) {
-        return educationLevelRepository.save(educationLevel);
-    }
-
-    public EducationLevel updateEducationLevel(@Valid EducationLevel educationLevel) {
-        return educationLevelRepository.save(educationLevel);
-    }
-
-    public void deleteEducationLevel(@Min(1)@NotNull Long id) {
-        educationLevelRepository.deleteById(id);
-    }
+    void deleteEducationLevel(@Min(1) @NotNull Long id);
 }

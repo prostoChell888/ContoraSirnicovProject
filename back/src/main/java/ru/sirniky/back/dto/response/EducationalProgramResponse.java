@@ -1,14 +1,12 @@
 package ru.sirniky.back.dto.response;
 
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Min;
+import lombok.Getter;
+import lombok.Setter;
 
-public record EducationalProgramResponse(
-        @NotNull(message = "ID cannot be null")
-        @Min(value = 1, message = "ID must be greater than 0")
-        Long id,
-
-        String name,
-
-        Long educationLevelId
-) {}
+@Getter
+@Setter
+public class EducationalProgramResponse {
+        private Long id;
+        private String name;
+        private Long educationLevelId;
+}

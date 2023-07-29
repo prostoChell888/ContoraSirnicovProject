@@ -3,42 +3,20 @@ package ru.sirniky.back.service;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.validation.annotation.Validated;
-import ru.sirniky.back.entity.Discipline;
-import ru.sirniky.back.repositrores.DisciplineRepository;
+import ru.sirniky.back.dto.request.CreateDisciplineRequest;
+import ru.sirniky.back.dto.response.DisciplineResponse;
 
 import java.util.List;
-import java.util.Optional;
 
-@Service
-@Validated
-public class DisciplineService {
-    private final DisciplineRepository disciplineRepository;
+public interface DisciplineService {
+    List<DisciplineResponse> getAllDisciplines();
 
-    @Autowired
-    public DisciplineService(DisciplineRepository disciplineRepository) {
-        this.disciplineRepository = disciplineRepository;
-    }
+    DisciplineResponse getDisciplineById(@Min(1) @NotNull Long id);
 
-    public List<Discipline> getAllDisciplines() {
-        return disciplineRepository.findAll();
-    }
+    DisciplineResponse saveDiscipline(@Valid CreateDisciplineRequest disciplineRequest);
 
-    public Optional<Discipline> getDisciplineById(@Min(1)@NotNull Long id) {
-        return disciplineRepository.findById(id);
-    }
+    DisciplineResponse updateDiscipline(@Min(1) @NotNull Long id, @Valid CreateDisciplineRequest disciplineRequest);
 
-    public Discipline saveDiscipline(@Valid Discipline discipline) {
-        return disciplineRepository.save(discipline);
-    }
-
-    public Discipline updateDiscipline(@Valid Discipline discipline) {
-        return disciplineRepository.save(discipline);
-    }
-
-    public void deleteDiscipline(@Min(1)@NotNull Long id) {
-        disciplineRepository.deleteById(id);
-    }
+    void deleteDiscipline(@Min(1) @NotNull Long id);
 }
+
