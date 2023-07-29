@@ -11,7 +11,7 @@ import ru.sirniky.back.entity.Discipline;
 @Mapper(componentModel = "spring")
 public interface DisciplineMapper {
 
-    @Mapping(target = "competenciesIds", source = "competencies", qualifiedByName = "competenciesToId")
+    @Mapping(target = "competencyIds", source = "competencies", qualifiedByName = "competenciesToId")
     DisciplineResponse toDto(Discipline discipline);
 
     @Named("competenciesToId")

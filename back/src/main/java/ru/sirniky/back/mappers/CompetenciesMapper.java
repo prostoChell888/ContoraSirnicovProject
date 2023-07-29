@@ -20,5 +20,6 @@ public interface CompetenciesMapper {
     }
 
     @Mapping(target = "educationalPrograms", ignore = true)
+    @Mapping(target = "id", ignore = true)
     Competencies toCompetencies(CreateCompetenciesRequest competenciesRequest);
 }

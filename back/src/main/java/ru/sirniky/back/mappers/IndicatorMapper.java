@@ -10,9 +10,11 @@ import ru.sirniky.back.entity.Indicator;
 @Mapper(componentModel = "spring")
 public interface IndicatorMapper {
 
-    @Mapping(target = "competenciesId", source = "competencies.id")
+    @Mapping(target = "competenciesId", source =  "competenciesId.id")
     IndicatorResponse toDto(Indicator indicator);
 
+    @Mapping(target = "id", ignore = true)
+    @Mapping(target = "competenciesId.id", source =  "competenciesId")
     Indicator toIndicator(CreateIndicatorRequest indicatorRequest);
 }
 
