@@ -1,14 +1,13 @@
 package ru.sirniky.back.dto.response;
 
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Min;
+import lombok.Getter;
+import lombok.Setter;
 
-public record IndicatorResponse(
-        @NotNull(message = "ID cannot be null")
-        @Min(value = 1, message = "ID must be greater than 0")
-        Long id,
-
-        String indicatorCode,
-        String nameOfIndicator,
-        Long competenciesId
-) {}
+@Getter
+@Setter
+public class IndicatorResponse {
+        private Long id;
+        private String indicatorCode;
+        private String nameOfIndicator;
+        private Long competenciesId;
+}
