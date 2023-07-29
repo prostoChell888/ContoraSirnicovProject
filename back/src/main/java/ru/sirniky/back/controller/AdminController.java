@@ -4,9 +4,11 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import ru.sirniky.back.dto.StudentDto;
+import ru.sirniky.back.dto.StudentWithPasswordDto;
 import ru.sirniky.back.dto.TeacherDto;
 import ru.sirniky.back.mapper.StudentMapper;
 import ru.sirniky.back.mapper.TeacherMapper;
+import ru.sirniky.back.service.EmailService;
 import ru.sirniky.back.service.StudentService;
 import ru.sirniky.back.service.TeacherService;
 
@@ -19,12 +21,17 @@ public class AdminController {
     private final TeacherMapper teacherMapper;
     private final StudentService studentService;
     private final StudentMapper studentMapper;
+    private final EmailService emailService;
 
 
     @PostMapping("/create/student")
     @ResponseStatus(HttpStatus.CREATED)
     public StudentDto createStudent(@RequestBody StudentDto student) {
-        return studentMapper.toDto(studentService.createStudent(student));
+        StudentWithPasswordDto studentWithPassword = studentService.createStudent(student);
+
+//        emailService.sendPasswordToEmail(studentWithPassword);
+
+        return studentWithPassword;
     }
 
     @DeleteMapping("/delete/student/{id}")
