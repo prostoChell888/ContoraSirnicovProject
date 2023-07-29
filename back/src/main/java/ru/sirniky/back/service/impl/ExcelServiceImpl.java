@@ -50,7 +50,7 @@ public class ExcelServiceImpl implements ExcelService {
             dataRow.createCell(1).setCellValue(fullName[1]);
             dataRow.createCell(2).setCellValue(fullName[2]);
             dataRow.createCell(3).setCellValue(student.getRecordBook());
-//            dataRow.createCell(4).setCellValue(student.getGroup());
+            dataRow.createCell(4).setCellValue(student.getGroup().getName());
         }
 
         // Сохраняем документ Excel в массив байтов

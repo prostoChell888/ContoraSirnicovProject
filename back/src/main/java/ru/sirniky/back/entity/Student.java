@@ -22,7 +22,7 @@ public class Student extends PersonInfo {
     @OneToMany
     private List<TestResult> testResults;
 
-//    @ManyToOne
-//    @JoinColumn(name = "group_id")
-//    private Group group;
+    @ManyToOne
+    @JoinColumn(name = "group_id")
+    private Group group;
 }
