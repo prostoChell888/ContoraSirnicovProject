@@ -11,6 +11,7 @@ import ru.sirniky.back.dto.StudentWithPasswordDto;
 import ru.sirniky.back.entity.Student;
 import ru.sirniky.back.exeption.EntityAlreadyExist;
 import ru.sirniky.back.mapper.StudentMapper;
+import ru.sirniky.back.repositrory.GroupRepository;
 import ru.sirniky.back.repositrory.StudentRepository;
 import ru.sirniky.back.service.RoleService;
 import ru.sirniky.back.service.StudentService;
@@ -25,6 +26,7 @@ import java.util.List;
 public class StudentServiceImpl implements StudentService {
 
     private final StudentRepository studentRepository;
+    private final GroupRepository groupRepository;
     private final RoleService roleService;
     private final StudentMapper studentMapper;
     private final PasswordEncoder passwordEncoder;

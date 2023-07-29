@@ -17,7 +17,7 @@ public class Student extends PersonInfo {
     @Column(name = "record_book", unique = true)
     private String recordBook;
 
-//    @ManyToOne
-//    @JoinColumn(name = "group_id")
-//    private Group group;
+    @ManyToOne
+    @JoinColumn(name = "group_id")
+    private Group group;
 }
