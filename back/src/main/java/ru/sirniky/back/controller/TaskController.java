@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import ru.sirniky.back.entity.task.Task;
 import ru.sirniky.back.dto.TaskDto;
-import ru.sirniky.back.service.TaskService;
+import ru.sirniky.back.service.Impl.TaskServiceImpl;
 
 import java.util.List;
 
@@ -19,25 +19,25 @@ import java.util.List;
 public class TaskController {
 
     @Autowired
-    private TaskService taskService;
+    private TaskServiceImpl taskServiceImpl;
 
     @PostMapping("/create")
     public void create(@RequestBody TaskDto task){
-        taskService.createTask(task);
+        taskServiceImpl.createTask(task);
     }
 
     @GetMapping("/search")
     public List<Task> searchTasks(@RequestParam(required = false) String type) {
         if (type != null) {
-            return taskService.findTasksByDtype(type);
+            return taskServiceImpl.findTasksByDtype(type);
         } else {
-            return taskService.findAll();
+            return taskServiceImpl.findAll();
         }
     }
 
     @GetMapping("/{id}")
     public Task findTaskById(@PathVariable Long id) {
-        return taskService.findTaskById(id);
+        return taskServiceImpl.findTaskById(id);
     }
 
 //    @PostMapping("/{id}/update")

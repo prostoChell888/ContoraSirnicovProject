@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import ru.sirniky.back.entity.test.Test;
 import ru.sirniky.back.dto.TestDto;
-import ru.sirniky.back.service.TestService;
+import ru.sirniky.back.service.Impl.TestServiceImpl;
 
 import java.util.List;
 
@@ -17,15 +17,15 @@ import java.util.List;
 public class TestController {
 
     @Autowired
-    private TestService testService;
+    private TestServiceImpl testServiceImpl;
 
     @GetMapping("/all")
     public List<Test> getAll() {
-        return testService.findAll();
+        return testServiceImpl.findAll();
     }
 
     @PostMapping("/create")
     public void createTest(@RequestBody TestDto testDto){
-        testService.create(testDto);
+        testServiceImpl.create(testDto);
     }
 }

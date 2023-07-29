@@ -31,7 +31,7 @@ public class TestResult {
     @JoinColumn(name = "test_id", referencedColumnName = "id")
     private Test test;
 
-    private ResultStatus status;
+    private ResultStatus status = ResultStatus.RESOLVED;
 
     private int scores;
 

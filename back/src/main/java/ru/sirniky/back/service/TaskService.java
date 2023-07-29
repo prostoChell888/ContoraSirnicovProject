@@ -1,38 +1,18 @@
 package ru.sirniky.back.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import ru.sirniky.back.entity.task.Task;
 import ru.sirniky.back.dto.TaskDto;
-import ru.sirniky.back.entity.task.TaskFactory;
-import ru.sirniky.back.exeption.TaskException;
-import ru.sirniky.back.repositrory.TaskRepository;
+import ru.sirniky.back.entity.task.Task;
 
 import java.util.List;
 
-@Service
-public class TaskService {
+public interface TaskService {
 
-    @Autowired
-    private TaskRepository taskRepository;
-    @Autowired
-    private TaskFactory taskFactory;
+    void createTask(TaskDto taskDto);
 
-    public void createTask(TaskDto taskDto) {
-        taskFactory.createTask(taskDto);
-    }
+    List<Task> findAll();
 
-    public List<Task> findAll() {
-        return taskRepository.findAll();
-    }
+    List<Task> findTasksByDtype(String type);
 
-    public List<Task> findTasksByDtype(String type){
-        return taskRepository.findAllByType(type);
-    }
-
-    public Task findTaskById(Long id){
-        return taskRepository.findById(id)
-                .orElseThrow(() -> new TaskException("Задачи с id = " + id + " нет в базе данных"));
-    }
+    Task findTaskById(Long id);
 
 }
