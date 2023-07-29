@@ -1,4 +1,4 @@
-package ru.sirniky.back.entity.dto;
+package ru.sirniky.back.dto;
 
 import lombok.Getter;
 import lombok.Setter;

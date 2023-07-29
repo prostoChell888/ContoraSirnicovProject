@@ -6,12 +6,15 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Inheritance;
 import jakarta.persistence.InheritanceType;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import ru.sirniky.back.entity.Test;
+import ru.sirniky.back.entity.Discipline;
+import ru.sirniky.back.entity.test.Test;
 
 import java.util.List;
 
@@ -30,5 +33,8 @@ public class Task {
     protected String type;
     @ManyToMany
     protected List<Test> tests;
+    @ManyToOne
+    @JoinColumn(name = "discipline_id", referencedColumnName = "id")
+    private Discipline discipline;
 
 }

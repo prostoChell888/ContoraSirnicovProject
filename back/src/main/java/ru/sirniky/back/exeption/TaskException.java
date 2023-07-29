@@ -1,4 +1,4 @@
-package ru.sirniky.back.exeptions;
+package ru.sirniky.back.exeption;
 
 public class TaskException extends RuntimeException{
 

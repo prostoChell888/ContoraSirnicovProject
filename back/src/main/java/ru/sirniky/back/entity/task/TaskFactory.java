@@ -3,8 +3,8 @@ package ru.sirniky.back.entity.task;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
-import ru.sirniky.back.entity.dto.TaskDto;
-import ru.sirniky.back.repositrores.TaskRepository;
+import ru.sirniky.back.dto.TaskDto;
+import ru.sirniky.back.repositrory.TaskRepository;
 
 @Component
 public class TaskFactory {

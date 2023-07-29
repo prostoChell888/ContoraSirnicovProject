@@ -3,10 +3,10 @@ package ru.sirniky.back.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.sirniky.back.entity.task.Task;
-import ru.sirniky.back.entity.dto.TaskDto;
+import ru.sirniky.back.dto.TaskDto;
 import ru.sirniky.back.entity.task.TaskFactory;
-import ru.sirniky.back.exeptions.TaskException;
-import ru.sirniky.back.repositrores.TaskRepository;
+import ru.sirniky.back.exeption.TaskException;
+import ru.sirniky.back.repositrory.TaskRepository;
 
 import java.util.List;
 

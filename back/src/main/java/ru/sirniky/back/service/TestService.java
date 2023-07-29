@@ -4,11 +4,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.sirniky.back.entity.task.Task;
-import ru.sirniky.back.entity.Test;
-import ru.sirniky.back.entity.dto.TestDto;
-import ru.sirniky.back.exeptions.TaskException;
-import ru.sirniky.back.repositrores.TaskRepository;
-import ru.sirniky.back.repositrores.TestRepository;
+import ru.sirniky.back.entity.test.Test;
+import ru.sirniky.back.dto.TestDto;
+import ru.sirniky.back.exeption.TaskException;
+import ru.sirniky.back.repositrory.TaskRepository;
+import ru.sirniky.back.repositrory.TestRepository;
 
 import java.util.ArrayList;
 import java.util.List;
