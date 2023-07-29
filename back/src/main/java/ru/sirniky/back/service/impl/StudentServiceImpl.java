@@ -17,6 +17,8 @@ import ru.sirniky.back.service.StudentService;
 import ru.sirniky.back.util.RoleEnum;
 import ru.sirniky.back.util.password.PasswordGenerator;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 @Validated
@@ -51,5 +53,11 @@ public class StudentServiceImpl implements StudentService {
     @Transactional
     public void deleteStudent(@NotNull int id) {
         studentRepository.deleteById(id);
+    }
+
+    @Override
+    @Transactional
+    public List<Student> getAllStudent() {
+        return studentRepository.findAll();
     }
 }
