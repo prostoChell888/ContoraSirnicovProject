@@ -1,4 +1,4 @@
-package ru.sirniky.back.test.entity.task;
+package ru.sirniky.back.entity.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

@@ -1,7 +1,9 @@
-package ru.sirniky.back.test.repository;
+package ru.sirniky.back.repositrores;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import ru.sirniky.back.test.entity.test.Test;
+import ru.sirniky.back.entity.Test;
 
 public interface TestRepository extends JpaRepository<Test, Long> {
+
+
 }
