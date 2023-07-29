@@ -30,9 +30,9 @@ public class ExceptionApiHandler {
         );
     }
 
-    @ExceptionHandler(NotFoundException.class)
+    @ExceptionHandler({NotFoundException.class})
     @ResponseStatus(value = HttpStatus.NOT_FOUND)
-    public ApiErrorResponse apiErrorExceptionHandler(NumberFormatException ex) {
+    public ApiErrorResponse apiErrorExceptionHandler(NotFoundException ex) {
         return new ApiErrorResponse(
                 "Not found",
                 "404",
@@ -45,7 +45,7 @@ public class ExceptionApiHandler {
 
     @ExceptionHandler(BadRequestException.class)
     @ResponseStatus(value = HttpStatus.BAD_REQUEST)
-    public ApiErrorResponse badRequestExceptionHandler(NumberFormatException ex) {
+    public ApiErrorResponse badRequestExceptionHandler(BadRequestException ex) {
         return new ApiErrorResponse(
                 "Bad Request",
                 "400",

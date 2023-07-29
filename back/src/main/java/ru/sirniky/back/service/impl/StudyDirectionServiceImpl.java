@@ -79,6 +79,8 @@ public class StudyDirectionServiceImpl implements StudyDirectionService {
     @Override
     @Transactional
     public void deleteStudyDirection(@Min(1) @NotNull Long id) {
+        studyDirectionRepository.findById(id)
+                .orElseThrow(() -> new NotFoundException(STUDY_DIRECTION_NOT_FOUND_WITH_ID + id));
         studyDirectionRepository.deleteById(id);
     }
 }

@@ -67,6 +67,8 @@ public class EducationLevelServiceImpl implements EducationLevelService {
     @Override
     @Transactional
     public void deleteEducationLevel(@Min(1) @NotNull Long id) {
+        educationLevelRepository.findById(id)
+                .orElseThrow(() -> new NotFoundException(EDUCATION_LEVEL_NOT_FOUND_WITH_ID + id));
         educationLevelRepository.deleteById(id);
     }
 }

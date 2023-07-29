@@ -79,6 +79,8 @@ public class IndicatorServiceImpl implements IndicatorService {
     @Override
     @Transactional
     public void deleteIndicator(@Min(1) @NotNull Long id) {
+        indicatorRepository.findById(id)
+                .orElseThrow(() -> new NotFoundException(INDICATOR_NOT_FOUND_WITH_ID + id));
         indicatorRepository.deleteById(id);
     }
 }

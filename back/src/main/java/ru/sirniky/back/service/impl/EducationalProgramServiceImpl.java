@@ -79,6 +79,8 @@ public class EducationalProgramServiceImpl implements EducationalProgramService 
     @Override
     @Transactional
     public void deleteEducationalProgram(@Min(1) @NotNull Long id) {
+        educationalProgramRepository.findById(id)
+                .orElseThrow(() -> new NotFoundException(EDUCATIONAL_PROGRAM_NOT_FOUND_WITH_ID + id));
         educationalProgramRepository.deleteById(id);
     }
 }

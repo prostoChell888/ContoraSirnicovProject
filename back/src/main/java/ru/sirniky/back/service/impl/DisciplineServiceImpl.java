@@ -79,6 +79,8 @@ public class DisciplineServiceImpl implements DisciplineService {
     @Override
     @Transactional
     public void deleteDiscipline(@Min(1) @NotNull Long id) {
+        disciplineRepository.findById(id)
+                .orElseThrow(() -> new NotFoundException(DISCIPLINE_NOT_FOUND_WITH_ID + id));
         disciplineRepository.deleteById(id);
     }
 }

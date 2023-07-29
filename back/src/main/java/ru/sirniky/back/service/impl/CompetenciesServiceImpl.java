@@ -76,6 +76,8 @@
         @Override
         @Transactional
         public void deleteCompetencies(@Min(1) @NotNull Long id) {
+            competenciesRepository.findById(id)
+                    .orElseThrow(() -> new NotFoundException(COMPETENCIES_NOT_FOUND_WITH_ID + id));
             competenciesRepository.deleteById(id);
         }
     }
