@@ -14,8 +14,8 @@ import ru.sirniky.back.entity.EducationalProgram;
 import ru.sirniky.back.exeptions.NotFoundException;
 import ru.sirniky.back.mappers.EducationalProgramMapper;
 
-import ru.sirniky.back.repositrores.EducationLevelRepository;
 import ru.sirniky.back.repositrores.EducationalProgramRepository;
+import ru.sirniky.back.repositrores.StudyDirectionRepository;
 import ru.sirniky.back.service.EducationalProgramService;
 
 import java.util.List;
@@ -29,7 +29,7 @@ public class EducationalProgramServiceImpl implements EducationalProgramService 
 
     private final EducationalProgramRepository educationalProgramRepository;
     private final EducationalProgramMapper educationalProgramMapper;
-    private final EducationLevelRepository educationLevelRepository;
+    private final StudyDirectionRepository studyDirectionRepository;
 
     @Override
     public List<EducationalProgramResponse> getAllEducationalPrograms() {
@@ -50,11 +50,11 @@ public class EducationalProgramServiceImpl implements EducationalProgramService 
     @Override
     @Transactional
     public EducationalProgramResponse saveEducationalProgram(@Valid CreateEducationalProgramRequest programRequest) {
-        var educationLevel = educationLevelRepository.findById(programRequest.educationLevelId())
+        var educationLevel = studyDirectionRepository.findById(programRequest.studyDirectionId())
                 .orElseThrow(() -> new NotFoundException(NOT_FOUND_EDUCATION_LEVEL_WITH_ID));
 
         EducationalProgram educationalProgram = educationalProgramMapper.toEducationalProgram(programRequest);
-        educationalProgram.setEducationLevel(educationLevel);
+        educationalProgram.setStudyDirection(educationLevel);
         educationalProgram = educationalProgramRepository.save(educationalProgram);
 
         return educationalProgramMapper.toDto(educationalProgram);
@@ -66,11 +66,11 @@ public class EducationalProgramServiceImpl implements EducationalProgramService 
         educationalProgramRepository.findById(id)
                 .orElseThrow(() -> new NotFoundException(EDUCATIONAL_PROGRAM_NOT_FOUND_WITH_ID + id));
 
-        var educationLevel = educationLevelRepository.findById(programRequest.educationLevelId())
+        var educationLevel = studyDirectionRepository.findById(programRequest.studyDirectionId())
                 .orElseThrow(() -> new NotFoundException(NOT_FOUND_EDUCATION_LEVEL_WITH_ID));
 
         EducationalProgram existingEducationalProgram = educationalProgramMapper.toEducationalProgram(programRequest);
-        existingEducationalProgram.setEducationLevel(educationLevel);
+        existingEducationalProgram.setStudyDirection(educationLevel);
         existingEducationalProgram = educationalProgramRepository.save(existingEducationalProgram);
 
         return educationalProgramMapper.toDto(existingEducationalProgram);

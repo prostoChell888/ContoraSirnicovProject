@@ -10,5 +10,5 @@ public record CreateEducationalProgramRequest(
 
         @NotNull(message = "Education level ID cannot be null")
         @Min(value = 1, message = "Education level ID must be greater than 0")
-        Long educationLevelId
+        Long studyDirectionId
 ) {}

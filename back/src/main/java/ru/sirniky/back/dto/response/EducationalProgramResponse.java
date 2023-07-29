@@ -8,5 +8,5 @@ import lombok.Setter;
 public class EducationalProgramResponse {
         private Long id;
         private String name;
-        private Long educationLevelId;
+        private Long studyDirectionId;
 }

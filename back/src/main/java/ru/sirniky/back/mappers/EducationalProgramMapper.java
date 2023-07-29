@@ -11,6 +11,6 @@ public interface EducationalProgramMapper {
 
     EducationalProgramResponse toDto(EducationalProgram educationalProgram);
 
-    @Mapping(target =  "educationLevel.id", source = "educationLevelId")
+    @Mapping(target =  "studyDirection.id", source = "studyDirectionId")
     EducationalProgram toEducationalProgram(CreateEducationalProgramRequest programRequest);
 }

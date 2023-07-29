@@ -31,12 +31,12 @@ public class CompetenciesController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public CompetenciesResponse createCompetencies(@RequestBody @Valid CreateCompetenciesRequest request) {
+    public CompetenciesResponse createCompetencies(@RequestBody  CreateCompetenciesRequest request) {
         return competenciesService.saveCompetencies(request);
     }
 
     @PutMapping("/{id}")
-    public CompetenciesResponse updateCompetencies(@PathVariable Long id, @RequestBody @Valid CreateCompetenciesRequest request) {
+    public CompetenciesResponse updateCompetencies(@PathVariable Long id, @RequestBody  CreateCompetenciesRequest request) {
         return competenciesService.updateCompetencies(id, request);
     }
 
