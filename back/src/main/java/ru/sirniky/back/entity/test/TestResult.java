@@ -11,6 +11,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import ru.sirniky.back.entity.Student;
+import ru.sirniky.back.entity.Teacher;
 import ru.sirniky.back.enums.ResultStatus;
 
 @Entity
@@ -35,5 +36,8 @@ public class TestResult {
     private ResultStatus status = ResultStatus.RESOLVED;
 
     private int scores;
+    @ManyToOne
+    @JoinColumn(name = "assignedTest_id", referencedColumnName = "id")
+    private AssignedTest assignedTest;
 
 }

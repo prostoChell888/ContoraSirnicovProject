@@ -2,6 +2,9 @@ package ru.sirniky.back.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import ru.sirniky.back.entity.test.AssignedTest;
+
+import java.util.List;
 
 @Entity
 @Table(name = "student_group")
@@ -21,5 +24,8 @@ public class Group {
 
     @Column(name = "course")
     private Integer course;
+
+    @ManyToMany
+    protected List<AssignedTest> assignedTests;
 
 }

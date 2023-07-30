@@ -1,6 +1,5 @@
 package ru.sirniky.back.entity.test;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -15,7 +14,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import ru.sirniky.back.entity.Discipline;
-import ru.sirniky.back.entity.task.Task;
+import ru.sirniky.back.entity.Group;
+import ru.sirniky.back.entity.Teacher;
 
 import java.util.List;
 
@@ -24,18 +24,21 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "test")
-public class Test {
+@Table(name = "assigned_test")
+public class AssignedTest {
+
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
-    @Column(name = "name")
-    private String name;
-    @ManyToMany
-    private List<Task> tasks;
     @ManyToOne
-    @JoinColumn(name = "discipline_id", referencedColumnName = "id")
-    private Discipline discipline;
+    @JoinColumn(name = "test_id", referencedColumnName = "id")
+    private Test test;
+    @ManyToOne
+    @JoinColumn(name = "teacher_id", referencedColumnName = "id")
+    private Teacher teacher;
+    @ManyToMany
+    private List<Group> groups;
     @OneToMany
-    private List<AssignedTest> assignedTest;
+    private List<TestResult> testResults;
+
 }
