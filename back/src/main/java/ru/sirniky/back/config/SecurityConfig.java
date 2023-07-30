@@ -43,6 +43,7 @@ public class SecurityConfig {
                             .hasRole(RoleEnum.TEACHER.name())
                         .anyRequest()
                             .permitAll()
+
                 )
                 .httpBasic(Customizer.withDefaults());
 
