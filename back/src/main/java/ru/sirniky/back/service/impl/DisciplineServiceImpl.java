@@ -48,8 +48,8 @@ public class DisciplineServiceImpl implements DisciplineService {
     @Override
     @Transactional
     public DisciplineResponse saveDiscipline(@Valid CreateDisciplineRequest disciplineRequest) {
-        var findingIds = competenciesRepository.findAllById(disciplineRequest.competenciesIds());
-        if (findingIds.size() != disciplineRequest.competenciesIds().size()) {
+        var findingIds = competenciesRepository.findAllById(disciplineRequest.competencyIds());
+        if (findingIds.size() != disciplineRequest.competencyIds().size()) {
             throw new NotFoundException(NOT_FOUND_COMPETENCIES_WITH_ID);
         }
         Discipline discipline = disciplineMapper.toDiscipline(disciplineRequest);
@@ -65,8 +65,8 @@ public class DisciplineServiceImpl implements DisciplineService {
         disciplineRepository.findById(id)
                 .orElseThrow(() -> new NotFoundException(DISCIPLINE_NOT_FOUND_WITH_ID + id));
 
-        var findingCompetenciesIds = competenciesRepository.findAllById(disciplineRequest.competenciesIds());
-        if (findingCompetenciesIds.size() != disciplineRequest.competenciesIds().size()) {
+        var findingCompetenciesIds = competenciesRepository.findAllById(disciplineRequest.competencyIds());
+        if (findingCompetenciesIds.size() != disciplineRequest.competencyIds().size()) {
             throw new NotFoundException(NOT_FOUND_COMPETENCIES_WITH_ID);
         }
         var existingDiscipline = disciplineMapper.toDiscipline(disciplineRequest);

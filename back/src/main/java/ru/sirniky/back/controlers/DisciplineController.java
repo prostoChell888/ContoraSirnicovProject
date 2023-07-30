@@ -1,6 +1,5 @@
 package ru.sirniky.back.controlers;
 
-import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -32,12 +31,12 @@ public class DisciplineController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public DisciplineResponse createDiscipline(@RequestBody @Valid CreateDisciplineRequest request) {
+    public DisciplineResponse createDiscipline(@RequestBody  CreateDisciplineRequest request) {
         return disciplineService.saveDiscipline(request);
     }
 
     @PutMapping("/{id}")
-    public DisciplineResponse updateDiscipline(@PathVariable Long id, @RequestBody @Valid CreateDisciplineRequest request) {
+    public DisciplineResponse updateDiscipline(@PathVariable Long id, @RequestBody  CreateDisciplineRequest request) {
         return disciplineService.updateDiscipline(id, request);
     }
 

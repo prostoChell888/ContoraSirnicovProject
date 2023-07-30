@@ -10,6 +10,6 @@ public record CreateDisciplineRequest(
         String indicatorCode,
 
         @NotNull(message = "Competencies IDs list cannot be null")
-        @Min(value = 1, message = "At least one competencies ID must be provided")
-        List<Long> competenciesIds
+        List<@Min(value = 1, message = "At least one competencies ID must be provided")
+                Long> competencyIds
 ) {}

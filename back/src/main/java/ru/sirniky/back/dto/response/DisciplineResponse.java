@@ -10,6 +10,5 @@ import java.util.List;
 public class DisciplineResponse {
         private Long id;
         private String indicatorCode;
-        private List<Long> competencyIds; // Replaced List<CompetenciesDTO> with List<Long>
-        // Add any other additional fields from Discipline entity if needed
+        private List<Long> competencyIds;
 }
