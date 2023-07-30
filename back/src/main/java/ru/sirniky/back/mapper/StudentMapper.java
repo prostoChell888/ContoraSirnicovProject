@@ -19,13 +19,7 @@ public interface StudentMapper {
     StudentDto toDto(Student student);
 
     @Mapping(target = "password", source = "password")
-    StudentWithPasswordDto toDtoWithPassword( String password);
+    @Mapping(target = "group", source = "student.group.name")
+    StudentWithPasswordDto toDtoWithPassword(Student student, String password);
 
-    @Named("mapGroupToString")
-    static String mapGroupToString(Group group) {
-        // Implement the conversion logic here
-        // For example, if the Group has a property named "name", you can use:
-        // return group.getName();
-        return null; // Replace this with the actual conversion logic
-    }
 }

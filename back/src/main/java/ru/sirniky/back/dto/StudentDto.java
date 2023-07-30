@@ -13,8 +13,8 @@ import lombok.experimental.SuperBuilder;
 public class StudentDto extends PersonDto {
 
     @NotBlank(message = "record book must be not null")
-    private String recordBook;
+    protected String recordBook;
 
     @NotBlank(message = "student group must be not blank")
-    private String group;
+    protected String group;
 }
