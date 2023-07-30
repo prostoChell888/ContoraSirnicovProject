@@ -30,7 +30,7 @@ public class ResultController {
     }
 
     @PostMapping("/create")
-    public void create(TestResultDto testResultDto){
+    public void create(@RequestBody TestResultDto testResultDto){
         resultService.checkAnswer(testResultDto);
     }
 
