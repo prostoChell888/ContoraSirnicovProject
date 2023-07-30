@@ -15,5 +15,4 @@ public class TestResultDto {
 
     private Long id;
 
-    private LinkedHashMap<String, String> answers;
 }
