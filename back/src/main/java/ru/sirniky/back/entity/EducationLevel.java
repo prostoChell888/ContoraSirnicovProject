@@ -23,5 +23,4 @@ public class EducationLevel {
 
     @Column(name = "ugsn_label")
     private String ugsnLabel;
-
 }
