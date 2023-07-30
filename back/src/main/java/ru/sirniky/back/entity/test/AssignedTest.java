@@ -1,14 +1,6 @@
 package ru.sirniky.back.entity.test;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,6 +9,7 @@ import ru.sirniky.back.entity.Discipline;
 import ru.sirniky.back.entity.Group;
 import ru.sirniky.back.entity.Teacher;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 @Entity
@@ -40,5 +33,11 @@ public class AssignedTest {
     private List<Group> groups;
     @OneToMany
     private List<TestResult> testResults;
+
+    @Column(name = "end_of_test_uime")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Timestamp endOfTestTime;
+
+
 
 }
