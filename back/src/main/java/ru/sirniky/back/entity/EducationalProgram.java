@@ -7,8 +7,6 @@ import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-import java.util.List;
-
 @Entity
 @Getter
 @Setter
@@ -27,7 +25,7 @@ public class EducationalProgram {
     @ManyToOne
     @JoinColumn(name = "educational_program_id",
             referencedColumnName = "id")
-    private EducationLevel educationLevel;
+    private StudyDirection studyDirection;
 
 
 }

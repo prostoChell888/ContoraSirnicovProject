@@ -28,7 +28,7 @@ public class Discipline {
 
     @ManyToMany()
     @JoinTable(
-            name = "competencies_educational_program_map",
+            name = "discipline_competencies_map",
             joinColumns = @JoinColumn(
                     name = "discipline_id",
                     referencedColumnName = "id"

@@ -24,6 +24,4 @@ public class EducationLevel {
     @Column(name = "ugsn_label")
     private String ugsnLabel;
 
-    @Column(name = "direction_сode")
-    private String directionCode;
 }

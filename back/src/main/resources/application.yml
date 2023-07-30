@@ -1,6 +1,6 @@
 springdoc:
   swagger-ui:
-    path: /swag
+    path: swagger
 server:
   port: 8011
 spring:
