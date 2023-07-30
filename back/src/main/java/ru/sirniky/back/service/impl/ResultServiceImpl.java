@@ -1,4 +1,4 @@
-package ru.sirniky.back.service.Impl;
+package ru.sirniky.back.service.impl;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
