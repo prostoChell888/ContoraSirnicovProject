@@ -10,9 +10,9 @@ import org.springframework.validation.annotation.Validated;
 import ru.sirniky.back.dto.request.CreateEducationLevelRequest;
 import ru.sirniky.back.dto.response.EducationLevelResponse;
 import ru.sirniky.back.entity.EducationLevel;
-import ru.sirniky.back.exeptions.NotFoundException;
-import ru.sirniky.back.mappers.EducationLevelMapper;
-import ru.sirniky.back.repositrores.EducationLevelRepository;
+import ru.sirniky.back.exeption.NotFoundException;
+import ru.sirniky.back.mapper.EducationLevelMapper;
+import ru.sirniky.back.repositrory.EducationLevelRepository;
 import ru.sirniky.back.service.EducationLevelService;
 
 import java.util.List;

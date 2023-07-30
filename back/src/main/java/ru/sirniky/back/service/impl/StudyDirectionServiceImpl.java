@@ -10,10 +10,10 @@ import org.springframework.validation.annotation.Validated;
 import ru.sirniky.back.dto.request.CreateStudyDirectionRequest;
 import ru.sirniky.back.dto.response.StudyDirectionResponse;
 import ru.sirniky.back.entity.StudyDirection;
-import ru.sirniky.back.exeptions.NotFoundException;
-import ru.sirniky.back.mappers.StudyDirectionMapper;
-import ru.sirniky.back.repositrores.EducationLevelRepository;
-import ru.sirniky.back.repositrores.StudyDirectionRepository;
+import ru.sirniky.back.exeption.NotFoundException;
+import ru.sirniky.back.mapper.StudyDirectionMapper;
+import ru.sirniky.back.repositrory.EducationLevelRepository;
+import ru.sirniky.back.repositrory.StudyDirectionRepository;
 import ru.sirniky.back.service.StudyDirectionService;
 
 import java.util.List;

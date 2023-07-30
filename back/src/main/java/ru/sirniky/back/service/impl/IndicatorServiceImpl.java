@@ -10,10 +10,10 @@ import org.springframework.validation.annotation.Validated;
 import ru.sirniky.back.dto.request.CreateIndicatorRequest;
 import ru.sirniky.back.dto.response.IndicatorResponse;
 import ru.sirniky.back.entity.Indicator;
-import ru.sirniky.back.exeptions.NotFoundException;
-import ru.sirniky.back.mappers.IndicatorMapper;
-import ru.sirniky.back.repositrores.CompetenciesRepository;
-import ru.sirniky.back.repositrores.IndicatorRepository;
+import ru.sirniky.back.exeption.NotFoundException;
+import ru.sirniky.back.mapper.IndicatorMapper;
+import ru.sirniky.back.repositrory.CompetenciesRepository;
+import ru.sirniky.back.repositrory.IndicatorRepository;
 import ru.sirniky.back.service.IndicatorService;
 
 import java.util.List;

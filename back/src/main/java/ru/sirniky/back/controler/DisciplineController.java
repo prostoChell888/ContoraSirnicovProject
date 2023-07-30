@@ -1,4 +1,4 @@
-package ru.sirniky.back.controlers;
+package ru.sirniky.back.controler;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

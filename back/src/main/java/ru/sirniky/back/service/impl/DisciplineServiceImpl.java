@@ -10,10 +10,10 @@ import org.springframework.validation.annotation.Validated;
 import ru.sirniky.back.dto.request.CreateDisciplineRequest;
 import ru.sirniky.back.dto.response.DisciplineResponse;
 import ru.sirniky.back.entity.Discipline;
-import ru.sirniky.back.exeptions.NotFoundException;
-import ru.sirniky.back.mappers.DisciplineMapper;
-import ru.sirniky.back.repositrores.CompetenciesRepository;
-import ru.sirniky.back.repositrores.DisciplineRepository;
+import ru.sirniky.back.exeption.NotFoundException;
+import ru.sirniky.back.mapper.DisciplineMapper;
+import ru.sirniky.back.repositrory.CompetenciesRepository;
+import ru.sirniky.back.repositrory.DisciplineRepository;
 import ru.sirniky.back.service.DisciplineService;
 
 import java.util.List;

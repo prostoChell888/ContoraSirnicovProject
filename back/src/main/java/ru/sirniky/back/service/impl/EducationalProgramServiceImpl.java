@@ -11,11 +11,11 @@ import ru.sirniky.back.dto.request.CreateEducationalProgramRequest;
 import ru.sirniky.back.dto.response.EducationalProgramResponse;
 import ru.sirniky.back.entity.EducationalProgram;
 
-import ru.sirniky.back.exeptions.NotFoundException;
-import ru.sirniky.back.mappers.EducationalProgramMapper;
+import ru.sirniky.back.exeption.NotFoundException;
+import ru.sirniky.back.mapper.EducationalProgramMapper;
 
-import ru.sirniky.back.repositrores.EducationalProgramRepository;
-import ru.sirniky.back.repositrores.StudyDirectionRepository;
+import ru.sirniky.back.repositrory.EducationalProgramRepository;
+import ru.sirniky.back.repositrory.StudyDirectionRepository;
 import ru.sirniky.back.service.EducationalProgramService;
 
 import java.util.List;

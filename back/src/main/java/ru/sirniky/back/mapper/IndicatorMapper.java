@@ -1,4 +1,4 @@
-package ru.sirniky.back.mappers;
+package ru.sirniky.back.mapper;
 
 
 import org.mapstruct.Mapper;

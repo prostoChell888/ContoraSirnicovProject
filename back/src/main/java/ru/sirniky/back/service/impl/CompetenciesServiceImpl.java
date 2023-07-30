@@ -10,10 +10,10 @@
     import ru.sirniky.back.dto.request.CreateCompetenciesRequest;
     import ru.sirniky.back.dto.response.CompetenciesResponse;
     import ru.sirniky.back.entity.Competencies;
-    import ru.sirniky.back.exeptions.NotFoundException;
-    import ru.sirniky.back.mappers.CompetenciesMapper;
-    import ru.sirniky.back.repositrores.CompetenciesRepository;
-    import ru.sirniky.back.repositrores.EducationalProgramRepository;
+    import ru.sirniky.back.exeption.NotFoundException;
+    import ru.sirniky.back.mapper.CompetenciesMapper;
+    import ru.sirniky.back.repositrory.CompetenciesRepository;
+    import ru.sirniky.back.repositrory.EducationalProgramRepository;
     import ru.sirniky.back.service.CompetenciesService;
 
     import java.util.List;

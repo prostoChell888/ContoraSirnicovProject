@@ -1,4 +1,4 @@
-package ru.sirniky.back.controlers;
+package ru.sirniky.back.controler;
 
 import jakarta.validation.ConstraintViolationException;
 import org.springframework.http.HttpStatus;
@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import ru.sirniky.back.dto.response.ApiErrorResponse;
-import ru.sirniky.back.exeptions.BadRequestException;
-import ru.sirniky.back.exeptions.NotFoundException;
+import ru.sirniky.back.exeption.BadRequestException;
+import ru.sirniky.back.exeption.NotFoundException;
 
 
 import java.util.Arrays;
