@@ -30,7 +30,9 @@ public class Task {
     private Long id;
     protected String question;
     protected String answer;
+    //Заменить на enum?
     protected String type;
+    //нужно лив?
     @ManyToMany
     protected List<Test> tests;
     @ManyToOne
