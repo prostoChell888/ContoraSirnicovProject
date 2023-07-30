@@ -14,8 +14,8 @@ import ru.sirniky.back.service.ResultService;
 @RequiredArgsConstructor
 public class ResultServiceImpl implements ResultService {
 
-    ResultRepository resultRepository;
-    TaskRepository taskRepository;
+    private final ResultRepository resultRepository;
+    private final TaskRepository taskRepository;
 
     public TestResult getResult(Long id){
         return resultRepository.findById(id)
