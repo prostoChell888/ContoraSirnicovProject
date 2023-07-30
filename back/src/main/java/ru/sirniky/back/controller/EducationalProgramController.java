@@ -1,4 +1,4 @@
-package ru.sirniky.back.controler;
+package ru.sirniky.back.controller;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
