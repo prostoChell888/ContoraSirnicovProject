@@ -1,11 +1,6 @@
 package ru.sirniky.back.entity.test;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,7 +9,7 @@ import ru.sirniky.back.entity.Student;
 import ru.sirniky.back.entity.Teacher;
 import ru.sirniky.back.enums.ResultStatus;
 
-import java.util.Map;
+import java.sql.Timestamp;
 
 @Entity
 @Getter
@@ -41,5 +36,9 @@ public class TestResult {
     @ManyToOne
     @JoinColumn(name = "assignedTest_id", referencedColumnName = "id")
     private AssignedTest assignedTest;
+
+    @Column(name = "test_completed_time")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Timestamp testCompletedTime;
 
 }

@@ -47,8 +47,8 @@ public class StudentServiceImpl implements StudentService {
         newStudent.setPassword(passwordEncoder.encode(randomPassword));
 
         newStudent.addRole(roleService.getRoleByName(RoleEnum.STUDENT));
-        studentRepository.save(newStudent);
-        return studentMapper.toDtoWithPassword( randomPassword);
+
+        return studentMapper.toDtoWithPassword(studentRepository.save(newStudent), randomPassword);
     }
 
     @Override
