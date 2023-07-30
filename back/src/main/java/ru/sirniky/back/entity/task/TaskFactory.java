@@ -1,11 +1,14 @@
 package ru.sirniky.back.entity.task;
 
-import io.netty.handler.timeout.ReadTimeoutException;
+
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 import ru.sirniky.back.dto.TaskDto;
+import ru.sirniky.back.exeption.BadRequestException;
 import ru.sirniky.back.repositrory.TaskRepository;
+
+import java.util.concurrent.BrokenBarrierException;
 
 @Component
 @RequiredArgsConstructor
@@ -31,7 +34,7 @@ public class TaskFactory {
             case (ORDERING_TASK) -> createOrderingTask(taskDto);
             case (SINGLE_CHOICE_TASK) -> createSingleChooseTask(taskDto);
             //todo при мердже с девом заменить на BadRequestException
-            default -> throw new RuntimeException("Тест с типом "
+            default -> throw new BadRequestException("Тест с типом "
                     + taskDto.getDType() + " не существует");
         }
     }
