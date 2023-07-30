@@ -5,8 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import ru.sirniky.back.entity.Discipline;
-import ru.sirniky.back.entity.Group;
+import ru.sirniky.back.entity.Student;
 import ru.sirniky.back.entity.Teacher;
 
 import java.sql.Timestamp;
@@ -19,7 +18,6 @@ import java.util.List;
 @NoArgsConstructor
 @Table(name = "assigned_test")
 public class AssignedTest {
-
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
@@ -30,7 +28,7 @@ public class AssignedTest {
     @JoinColumn(name = "teacher_id", referencedColumnName = "id")
     private Teacher teacher;
     @ManyToMany
-    private List<Group> groups;
+    private List<Student> students;
     @OneToMany
     private List<TestResult> testResults;
 
