@@ -11,8 +11,8 @@ import java.util.List;
 public interface CompetenciesService {
     List<CompetenciesResponse> getAllCompetencies();
     CompetenciesResponse getCompetenciesById(@Min(1) @NotNull Long id);
-    CompetenciesResponse updateCompetencies(@Min(1) @NotNull Long id, CreateCompetenciesRequest request);
+    CompetenciesResponse updateCompetencies(@Min(1) @NotNull Long id,@Valid CreateCompetenciesRequest request);
     void deleteCompetencies(@Min(1) @NotNull Long id);
-    public CompetenciesResponse saveCompetencies(@Valid CreateCompetenciesRequest competenciesRequest);
+     CompetenciesResponse saveCompetencies(@Valid CreateCompetenciesRequest competenciesRequest);
 
 }

@@ -51,7 +51,7 @@
             return getCompetenciesResponse(competenciesRequest);
         }
 
-        private CompetenciesResponse getCompetenciesResponse(@Valid CreateCompetenciesRequest competenciesRequest) {
+        private CompetenciesResponse getCompetenciesResponse( CreateCompetenciesRequest competenciesRequest) {
             var findingIds = educationalProgramRepository.findAllById(competenciesRequest.educationalProgramIds());
             if (findingIds.size() != competenciesRequest.educationalProgramIds().size()) {
                 throw new NotFoundException(NOT_FOUND_EDUCATIONAL_PROGRAMS_WITH_ID);

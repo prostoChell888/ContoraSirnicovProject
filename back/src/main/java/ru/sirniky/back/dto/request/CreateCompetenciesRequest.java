@@ -1,5 +1,6 @@
 package ru.sirniky.back.dto.request;
 
+
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -16,6 +17,6 @@ public record CreateCompetenciesRequest(
         String nameOfUniversalCompetence,
 
         @NotNull(message = "Educational program IDs list cannot be null")
-        @Min(value = 1, message = "At least one educational program ID must be provided")
-        List<Long> educationalProgramIds
+
+        List<@Min(1)@NotNull Long> educationalProgramIds
 ) {}
