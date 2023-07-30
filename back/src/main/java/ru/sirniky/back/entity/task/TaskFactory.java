@@ -1,7 +1,7 @@
 package ru.sirniky.back.entity.task;
 
+import io.netty.handler.timeout.ReadTimeoutException;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 import ru.sirniky.back.dto.TaskDto;
@@ -24,16 +24,19 @@ public class TaskFactory {
     public void createTask(TaskDto taskDto){
 
         switch (taskDto.getDType()) {
-            case (COMPLETION_TASK) -> createComliteTask(taskDto);
+            case (COMPLETION_TASK) -> createCompleteTask(taskDto);
             case (FREE_TEXT_TASK) -> createFreeTextTask(taskDto);
             case (MATCHING_TASK) -> createMatchingTask(taskDto);
-            case (MULTIPLE_CHOICE_TASK) -> createMultipleChoiseTask(taskDto);
+            case (MULTIPLE_CHOICE_TASK) -> createMultipleChooseTask(taskDto);
             case (ORDERING_TASK) -> createOrderingTask(taskDto);
-            case (SINGLE_CHOICE_TASK) -> createSingleChoiseTask(taskDto);
+            case (SINGLE_CHOICE_TASK) -> createSingleChooseTask(taskDto);
+            //todo при мердже с девом заменить на BadRequestException
+            default -> throw new RuntimeException("Тест с типом "
+                    + taskDto.getDType() + " не существует");
         }
     }
 
-    private void createSingleChoiseTask(TaskDto taskDto) {
+    private void createSingleChooseTask(TaskDto taskDto) {
         SingleChoiceTask singleChoiceTask = new SingleChoiceTask();
         singleChoiceTask.setAnswer(taskDto.getAnswer());
         singleChoiceTask.setQuestion(taskDto.getQuestion());
@@ -51,7 +54,7 @@ public class TaskFactory {
         taskRepository.save(orderingTask);
     }
 
-    private void createMultipleChoiseTask(TaskDto taskDto) {
+    private void createMultipleChooseTask(TaskDto taskDto) {
         MultipleChoiceTask multipleChoiceTask = new MultipleChoiceTask();
         multipleChoiceTask.setAnswer(taskDto.getAnswer());
         multipleChoiceTask.setQuestion(taskDto.getQuestion());
@@ -77,7 +80,7 @@ public class TaskFactory {
         taskRepository.save(freeTextTask);
     }
 
-    private void createComliteTask(TaskDto taskDto) {
+    private void createCompleteTask(TaskDto taskDto) {
         CompletionTask completionTask = new CompletionTask();
         completionTask.setAnswer(taskDto.getAnswer());
         completionTask.setQuestion(taskDto.getQuestion());
