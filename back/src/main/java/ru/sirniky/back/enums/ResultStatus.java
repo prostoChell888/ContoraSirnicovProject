@@ -1,4 +1,4 @@
-package ru.sirniky.back.entity.test;
+package ru.sirniky.back.enums;
 
 public enum ResultStatus {
     RESOLVED,
