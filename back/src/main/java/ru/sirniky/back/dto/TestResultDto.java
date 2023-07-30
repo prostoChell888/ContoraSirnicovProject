@@ -4,8 +4,10 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import ru.sirniky.back.entity.test.Answer;
 
 import java.util.LinkedHashMap;
+import java.util.List;
 
 @Getter
 @Setter
@@ -14,5 +16,5 @@ import java.util.LinkedHashMap;
 public class TestResultDto {
 
     private Long id;
-
+    private List<Answer> answerList;
 }
