@@ -14,7 +14,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-public class FreeTextTask extends Task {
+public class FreeTextTask extends Task implements OpenedQuestion {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;

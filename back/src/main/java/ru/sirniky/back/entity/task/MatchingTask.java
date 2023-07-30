@@ -14,14 +14,11 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-public class MatchingTask extends Task {
+public class MatchingTask extends Task implements ClosedQuestion{
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
     private String options;
 
-    public boolean checkAnswer(String answer) {
-        return false;
-    }
 }
 

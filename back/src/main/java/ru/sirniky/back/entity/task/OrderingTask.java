@@ -14,7 +14,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-public class OrderingTask extends Task {
+public class OrderingTask extends Task implements ClosedQuestion{
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;

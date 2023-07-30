@@ -14,7 +14,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-public class MultipleChoiceTask extends Task {
+public class MultipleChoiceTask extends Task implements ClosedQuestion{
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;

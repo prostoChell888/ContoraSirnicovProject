@@ -2,6 +2,7 @@ package ru.sirniky.back.service.impl;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import ru.sirniky.back.dto.TestResultDto;
 import ru.sirniky.back.entity.test.TestResult;
 import ru.sirniky.back.exeption.EntityNotFound;
 import ru.sirniky.back.repositrory.ResultRepository;
@@ -24,5 +25,12 @@ public class ResultServiceImpl implements ResultService {
         result.setStatus(updated.getStatus());
         resultRepository.save(result);
     }
+
+//    public void checkAnswer(TestResultDto testResultDto){
+//        TestResult testResult = new TestResult();
+//        for(var answer : testResultDto.getAnswers()){
+//
+//        }
+//    }
 
 }
