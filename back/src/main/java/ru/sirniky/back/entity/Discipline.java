@@ -5,6 +5,9 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+import org.hibernate.annotations.Cascade;
+import ru.sirniky.back.entity.task.Task;
+import ru.sirniky.back.entity.test.Test;
 
 import java.util.List;
 
@@ -36,4 +39,12 @@ public class Discipline {
             )
     )
     private List<Competencies> competencies;
+
+    @OneToMany(mappedBy = "discipline")
+    @Cascade(org.hibernate.annotations.CascadeType.ALL)
+    private List<Test> tests;
+
+    @OneToMany(mappedBy = "discipline")
+    @Cascade(org.hibernate.annotations.CascadeType.ALL)
+    private List<Task> tasks;
 }
