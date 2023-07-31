@@ -3,6 +3,7 @@ package ru.sirniky.back.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+import ru.sirniky.back.dto.request.AssignedTestRequest;
 import ru.sirniky.back.dto.response.AssignedTestResponse;
 import ru.sirniky.back.service.AssignedTestService;
 
@@ -19,12 +20,12 @@ public class AssignedTestController {
         return assignedTestService.getAllTaskByStudId(studentId);
     }
 
-//    @PostMapping("/student/{studentId}")
-//    public AssignedTestResponse createTaskForStudent(AssignedTestRequest assignedTestRequest) {
-//        return assignedTestService.createTaskForStudent(studentId);
-//    }
-//
-//
+    @PostMapping("/student/{studentId}")
+    public AssignedTestResponse createTaskForStudent(@RequestBody AssignedTestRequest assignedTestRequest) {
+        return assignedTestService.createtaskForStudent(assignedTestRequest);
+    }
+
+
 //    @PostMapping("/group/{groupId}")
 //    public AssignedTestsResponce createTaskForGroup(AssignedTestRequest assignedTestRequest) {
 //        return assignedTestService.createTaskForGroup(studentId);

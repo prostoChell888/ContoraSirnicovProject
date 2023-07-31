@@ -21,7 +21,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class UserDetailsServiceImpl implements UserDetailsService {
 
-    private final StudentRepository studentRepository; // Здесь UserRepository представляет ваш репозиторий для доступа к данным пользователей.
+    private final StudentRepository studentRepository;
     private final TeacherRepository teacherRepository;
 
     @Override
@@ -31,7 +31,6 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         PersonInfo personValue = person.orElseGet(() -> teacherRepository.findByEmail(email)
                 .orElseThrow(() -> new EntityNotFound("entity not found")));
 
-        // Здесь вы создаете объект UserDetails, который содержит информацию о пользователе, включая имя, пароль и роли.
         return new User(
                 personValue.getEmail(),
                 personValue.getPassword(),
@@ -41,7 +40,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     }
     private List<? extends GrantedAuthority> getAuthorities(List<Role> roles) {
         return roles.stream()
-                .map(role -> new SimpleGrantedAuthority("ROLE_" + role.getName())) // Важно, чтобы имена ролей начинались с "ROLE_"
+                .map(role -> new SimpleGrantedAuthority("ROLE_" + role.getName()))
                 .toList();
     }
 }

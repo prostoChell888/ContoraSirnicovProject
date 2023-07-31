@@ -3,6 +3,7 @@ package ru.sirniky.back.mapper;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Named;
+import ru.sirniky.back.dto.request.AssignedTestRequest;
 import ru.sirniky.back.dto.response.AssignedTestResponse;
 import ru.sirniky.back.entity.Competencies;
 import ru.sirniky.back.entity.Student;
@@ -22,4 +23,9 @@ public interface AssignedTestMapper {
     static Integer studentToId(Student student) {
         return student != null ? student.getId() : null;
     }
+
+    AssignedTest toSource(AssignedTestRequest request);
+
+
+
 }
